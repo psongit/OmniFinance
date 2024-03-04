@@ -33,7 +33,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,8 +55,8 @@ jobs:
       - name: dotnet build and publish
         run: |
           dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+          dotnet build OmniFinance.sln --configuration Release
+          dotnet publish src/OmniFinance.Web/OmniFinance.Web.csproj -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
 
       - name: Deploy OmniFinance app to Azure Web App
         id: deploy-to-webapp
