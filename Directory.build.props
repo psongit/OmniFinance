@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <Company>Omni Finance</Company>
+    <LangVersion>latest</LangVersion>
+    <Authors>Prakash S</Authors>
+    <Product>OmniFinance</Product>
+    <Copyright>Copyright © OmniFinance 2024-2024</Copyright>
+    <Version>0.0.1</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>0.0.1</AssemblyVersion>
+    <InformationalVersion>Alpha-01</InformationalVersion>
+    <PackageVersion>$(Version)</PackageVersion>
+    <TargetFramework>.net8.0</TargetFramework>
+    <ImplicitUsings>enabled</ImplicitUsings>
+  </PropertyGroup>
+</Project>

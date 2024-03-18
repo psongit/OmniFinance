@@ -9,6 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OmniFinance.Web.Client", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OmniFinance.UseCases", "src\OmniFinance.UseCases\OmniFinance.UseCases.csproj", "{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OmniFinance.Infrastructure", "src\OmniFinance.Infrastructure\OmniFinance.Infrastructure.csproj", "{81CC70A7-EDAE-4B49-B11B-3A884F223B46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OmniFinance.Core", "src\OmniFinance.Core\OmniFinance.Core.csproj", "{BA526BD5-9EAA-4520-91AF-14498DF9A494}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F5DD87E-EEBB-4C40-976A-F7915C50F179}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.build.props = Directory.build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +36,18 @@ Global
 		{CE6A8B2F-98B4-4F68-B20C-10510311FC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE6A8B2F-98B4-4F68-B20C-10510311FC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE6A8B2F-98B4-4F68-B20C-10510311FC36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CC70A7-EDAE-4B49-B11B-3A884F223B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CC70A7-EDAE-4B49-B11B-3A884F223B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CC70A7-EDAE-4B49-B11B-3A884F223B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CC70A7-EDAE-4B49-B11B-3A884F223B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA526BD5-9EAA-4520-91AF-14498DF9A494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA526BD5-9EAA-4520-91AF-14498DF9A494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA526BD5-9EAA-4520-91AF-14498DF9A494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA526BD5-9EAA-4520-91AF-14498DF9A494}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +55,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{18110CDC-7DF4-4B75-977E-E9C5F116ED1C} = {4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}
 		{CE6A8B2F-98B4-4F68-B20C-10510311FC36} = {4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}
+		{9B1A3561-D8E6-4952-9F7D-EADF8AA4779C} = {4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}
+		{81CC70A7-EDAE-4B49-B11B-3A884F223B46} = {4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}
+		{BA526BD5-9EAA-4520-91AF-14498DF9A494} = {4C93BF19-DDE2-4FCC-A8C6-438387D6C77F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67D09706-98E8-46D2-9032-DC6AE2759C6D}

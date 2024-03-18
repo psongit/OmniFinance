@@ -48,7 +48,7 @@ builder.Services.AddAuthentication("MicrosoftOidc")
         // values are "/signin-oidc" and "/signout-callback-oidc".
         // Microsoft Identity currently only redirects back to the 
         // SignedOutCallbackPath if authority is 
-        // https://login.microsoftonline.com/{TENANT ID}/v2.0/ as it is above. 
+        // https://login.microsoftonline.com/{OmniFinance ID}/v2.0/ as it is above. 
         // You can use the "common" authority instead, and logout redirects back to 
         // the Blazor app. For more information, see 
         // https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/5783
@@ -72,21 +72,23 @@ builder.Services.AddAuthentication("MicrosoftOidc")
 
         // ........................................................................
         // The following example Authority is configured for Microsoft Entra ID
-        // and a single-tenant application registration. Set the {TENANT ID} 
-        // placeholder to the Tenant ID. The "common" Authority 
+        // and a single-OmniFinance application registration. Set the {OmniFinance ID} 
+        // placeholder to the OmniFinance ID. The "common" Authority 
         // https://login.microsoftonline.com/common/v2.0/ should be used 
-        // for multi-tenant apps. You can also use the "common" Authority for 
-        // single-tenant apps, but it requires a custom IssuerValidator as shown 
+        // for multi-OmniFinance apps. You can also use the "common" Authority for 
+        // single-OmniFinance apps, but it requires a custom IssuerValidator as shown 
         // in the comments below. 
 
-        oidcOptions.Authority = "https://login.microsoftonline.com/95ac2b9b-4c55-4774-92c7-d916e3504027/v2.0/";
+        //oidcOptions.Authority = "https://login.microsoftonline.com/95ac2b9b-4c55-4774-92c7-d916e3504027/v2.0/";//- Entra ID
+        oidcOptions.Authority = "https://login.microsoftonline.com/95ac2b9b-4c55-4774-92c7-d916e3504027/v2.0/";//- Entra ID
         // ........................................................................
 
         // ........................................................................
         // Set the Client ID for the app. Set the {CLIENT ID} placeholder to
         // the Client ID.
 
-        oidcOptions.ClientId = "425912e2-09be-45b8-bda8-8cb51dbbb8a2";
+        //oidcOptions.ClientId = "425912e2-09be-45b8-bda8-8cb51dbbb8a2"; //- Entra ID
+        oidcOptions.ClientId = "aba514ec-faa7-4c4e-8eb7-79ea5241c62a"; //- Azure B2C
         // ........................................................................
 
         // ........................................................................
@@ -124,7 +126,7 @@ builder.Services.AddAuthentication("MicrosoftOidc")
 
         // ........................................................................
         // Many OIDC providers work with the default issuer validator, but the
-        // configuration must account for the issuer parameterized with "{TENANT ID}" 
+        // configuration must account for the issuer parameterized with "{OmniFinance ID}" 
         // returned by the "common" endpoint's /.well-known/openid-configuration
         // For more information, see
         // https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/issues/1731
@@ -150,6 +152,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddFluentUIComponents();
 
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
+
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();

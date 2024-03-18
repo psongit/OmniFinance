@@ -2,6 +2,14 @@
 @using Microsoft.AspNetCore.Authorization
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new Fluent Blazor app.
+<AuthorizeView>
+    <NotAuthorized>
+        <FluentCard>
+            <h2>Hello World!</h2>
+            <FluentButton Appearance="@Appearance.Accent">Click Me</FluentButton>
+        </FluentCard>
+    </NotAuthorized>
+    <Authorized>
+        <FluentPersona Name="@context.User.Identity?.Name" ImageSize="30px" Slot="end" />
+    </Authorized>
+</AuthorizeView>
