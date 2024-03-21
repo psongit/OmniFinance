@@ -1,4 +1,4 @@
-using Microsoft.FluentUI.AspNetCore.Components;
+﻿using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -6,8 +6,21 @@ using OmniFinance.Web.Client.Pages;
 using OmniFinance.Web.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using OmniFinance.Web.Security;
+using FastEndpoints.Swagger;
+using Autofac.Extensions.DependencyInjection;
+using FastEndpoints;
+using Autofac;
+using Serilog;
+using OmniFinance.Core;
+using OmniFinance.Infrastructure;
+using Ardalis.ListStartupServices;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.UseSerilog((_, config) => config.ReadFrom.Configuration(builder.Configuration));
+
 
 builder.Services.AddAuthentication("MicrosoftOidc")
     .AddOpenIdConnect("MicrosoftOidc", oidcOptions =>
@@ -151,6 +164,28 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddFluentUIComponents();
 
+builder.Services.AddFastEndpoints();
+builder.Services.SwaggerDocument(o =>
+{
+  o.ShortSchemaNames = true;
+});
+
+// add list services for diagnostic purposes - see https://github.com/ardalis/AspNetCoreStartupServices
+builder.Services.Configure<ServiceConfig>(config =>
+{
+  config.Services = new List<ServiceDescriptor>(builder.Services);
+
+  // optional - default path to view services is /listallservices - recommended to choose your own path
+  config.Path = "/listservices";
+});
+
+
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+  containerBuilder.RegisterModule(new DefaultCoreModule());
+  containerBuilder.RegisterModule(new AutofacInfrastructureModule(builder.Environment.IsDevelopment()));
+});
+
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
 
 builder.Services.AddHttpContextAccessor();
@@ -168,6 +203,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseFastEndpoints().UseSwaggerGen(); // FastEndpoints middleware
 
 app.UseHttpsRedirection();
 
